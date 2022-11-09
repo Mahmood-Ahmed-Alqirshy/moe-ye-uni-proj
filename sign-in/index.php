@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body class="text-center">
   <main class="form-signin">
     <form method="post" action="">
-      <img class="mb-4" src="logo.png" alt="" width="128" height="128" />
+      <img class="mb-4" src="../logo.png" alt="" width="128" height="128" />
       <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
       <select style="height: 58px;" id="year" class="form-control" name="year" placeholder="السنة الدراسية">
         <option value="" selected>السنة الدراسية</option>
