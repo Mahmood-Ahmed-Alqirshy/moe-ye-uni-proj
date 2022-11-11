@@ -24,7 +24,22 @@
 
     </a>
     <div class="text-end mx-lg-5">
-      <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/sign-in"' ?> class="btn btn-outline-secondary me-2" style="text-decoration: none;">تسجيل الدخول</a>
+      <?php
+      if (!isset($name))
+        echo '<a href=' . '"http://' . $serverIP . '/moe-yemen/sign-in"' . ' class="btn btn-outline-secondary me-2" style="text-decoration: none;">تسجيل الدخول</a>';
+      else
+        echo <<< "isIn"
+        <div class="dropdown">
+          <button type="button" class="dropdown-toggle text-light btn btn-outline-secondary" data-bs-toggle="dropdown">
+            $name
+          </button>
+          <ul class="dropdown-menu bg-dark bg-dark">
+            <li><a class="dropdown-item  text-light" href="http://$serverIP/moe-yemen/profile">معلومات الطالب</a></li>
+            <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/sign-out.php">تسجيل الخروج</a></li>
+          </ul>
+        </div>
+        isIn;
+      ?>
     </div>
     <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05">
       <span class="navbar-toggler-icon"></span>

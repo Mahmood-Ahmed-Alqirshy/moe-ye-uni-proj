@@ -1,6 +1,6 @@
 <?php
-//condition will change
-if (!isset($_SESSION["user"]) || $_SESSION["user"] !== "student") {
-  header("location: http://localhost/moe-yemen/sign-in/");
+if (!isset($name)) {
+  $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+  header('location: http://' . $serverIP . '/moe-yemen/sign-in/?location=' . $_SERVER['REQUEST_URI']);
   die();
 }

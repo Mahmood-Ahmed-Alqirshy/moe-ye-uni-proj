@@ -1,3 +1,4 @@
+<?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -49,6 +50,7 @@
 </head>
 
 <body style="padding: 0;">
+
   <?php include("../header.php") ?>
   <main>
 

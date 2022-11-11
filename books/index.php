@@ -1,3 +1,4 @@
+<?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
@@ -30,7 +31,7 @@
 </head>
 
 <body>
-  <?php include("http://$serverIP/moe-yemen/header.php") ?>
+  <?php include("../header.php") ?>
   <main class="container">
     <img src="1.jpg" class="mb-4 text-white rounded bg-dark cover-img">
 
@@ -78,13 +79,13 @@
 
       <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem">
-          <?php include("http://$serverIP/moe-yemen/newsBox.php") ?>
+          <?php include("../newsBox.php") ?>
         </div>
       </div>
   </main>
 
   <!-- footer -->
-  <?php include("http://$serverIP/moe-yemen/footer.php") ?>
+  <?php include("../footer.php") ?>
 </body>
 
 </html>
