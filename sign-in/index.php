@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="تسجيل الدخول الى وزارة التربية والتعليم اليمنية" />
   <title>تسجيل الدخول</title>
 
   <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
@@ -60,32 +59,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
   <link href="signin.css" rel="stylesheet" />
 </head>
+<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
 
 <body class="text-center">
-  <main class="form-signin">
-    <form method="post" action="">
-      <img class="mb-4" src="../logo.png" alt="" width="128" height="128" />
-      <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
-      <select style="height: 58px;" id="year" class="form-control" name="year" placeholder="السنة الدراسية">
+  <?php include("http://$serverIP/moe-yemen/header.php") ?>
+  <div class="body">
+    <main class="form-signin">
+      <form method="post" action="">
+        <img class="mb-4" src="../logo.png" alt="" width="128" height="128" />
+        <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
+        <!-- <select style="height: 58px;" id="year" class="form-control" name="year" placeholder="السنة الدراسية">
         <option value="" selected>السنة الدراسية</option>
         <option value="2022-2023">2022-2023</option>
         <option value="2021-2022">2021-2022</option>
         <option value="2020-2021">2020-2021</option>
         <option value="2019-2020">2019-2020</option>
       </select>
-      <label for="year" hidden>year</label>
-
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="student-number" name="student-number" placeholder="رقم الجلوس" />
-        <label for="student-number">رقم الجلوس</label>
-      </div>
-
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        تسجيل
-      </button>
-    </form>
-  </main>
+      <label for="year" hidden>year</label> -->
+        <div class="form-floating">
+          <input type="text" class="form-control" id="student-number" name="student-number" placeholder="رقم الجلوس" />
+          <label for="student-number">اسم المستخدم</label>
+        </div>
+        <br>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="student-number" name="student-number" placeholder="رقم الجلوس" />
+          <label for="student-number">كلمة المرور</label>
+        </div>
+        <br>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          تسجيل
+        </button>
+      </form>
+    </main>
+  </div>
+  <script src=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/js/bootstrap.bundle.min.js"' ?>></script>
 </body>
 
 </html>
