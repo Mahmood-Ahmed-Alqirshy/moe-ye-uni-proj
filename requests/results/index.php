@@ -39,45 +39,55 @@
     <div class="row">
       <div class="col-md-8">
         <article class="blog-post">
-          <h1>طلب عرض النتائج</h1>
-          <form action="">
-            <div class="row">
 
+
+          <h1>طلب عرض النتائج</h1>
+          <?php
+          if (isset($_GET['error'])) {
+            echo '<h2 class="text-danger">بياناتك غير صحيحة</h2>';
+          }
+          ?>
+          <form action=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results/result.php"' ?> method="GET">
+            <div class="row">
               <div class="form-group col-12 col-md-8">
                 <label for="years">المرحلة الدراسية</label>
-                <select class="form-control form-control-lg" id="years">
-                  <option>اول ابتدائي</option>
-                  <option>ثاني ابتدائي</option>
-                  <option>ثالث ابتدائي</option>
-                  <option>رابع ابتدائي</option>
-                  <option>خامس ابتدائي</option>
-                  <option>سادس ابتدائي</option>
-                  <option>اول اعدادي</option>
-                  <option>ثاني اعدادي</option>
-                  <option>ثالث اعدادي</option>
-                  <option>اول ثانوي</option>
-                  <option>ثاني ثانوي</option>
-                  <option>ثالث ثانوي</option>
+                <select class="form-control form-control-lg" id="years" name="year">
+                  <option value="1">اول ابتدائي</option>
+                  <option value="2">ثاني ابتدائي</option>
+                  <option value="3">ثالث ابتدائي</option>
+                  <option value="4">رابع ابتدائي</option>
+                  <option value="5">خامس ابتدائي</option>
+                  <option value="6">سادس ابتدائي</option>
+                  <option value="7">اول اعدادي</option>
+                  <option value="8">ثاني اعدادي</option>
+                  <option value="9">ثالث اعدادي</option>
+                  <option value="10">اول ثانوي</option>
+                  <option value="11">ثاني ثانوي</option>
+                  <option value="12">ثالث ثانوي</option>
                 </select>
               </div>
               <div class="form-group col-12 col-md-4 ">
                 <label for="term">الفصل الدراسية</label>
-                <select class="form-control form-control-lg" id="term">
-                  <option>1</option>
-                  <option>2</option>
+                <select class="form-control form-control-lg" id="term" name="term">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
                 </select>
               </div>
             </div>
             <br>
-            <div class="form-group">
+            <div class="form-group d-none" id="seat-number-display">
               <label for="seat-number">رقم الجلوس</label>
-              <input type="text" class="form-control form-control-lg" id="seat-number" placeholder="رقم الجلوس">
+              <input name="seat-number" type="text" class="form-control form-control-lg" id="seat-number" value="" placeholder="رقم الجلوس">
             </div>
             <br>
             <div class="form-group">
               <button type="submit" class="btn btn-primary">ارسال</button>
             </div>
           </form>
+
+
+          <!--  -->
+
         </article>
       </div>
 
@@ -90,6 +100,7 @@
 
   <!-- footer -->
   <?php include("../../footer.php") ?>
+  <script src="main.js"></script>
 </body>
 
 </html>

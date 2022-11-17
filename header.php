@@ -1,4 +1,5 @@
 <?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="stylesheet" href=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/css/bootstrap.rtl.min.css"' ?>>
 <style>
   .hdr {
@@ -68,11 +69,9 @@
             </button>
             <ul class="dropdown-menu bg-dark">
               <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results"' ?>>عرض النتائج</a></li>
-              <!-- <li><a class="dropdown-item text-light" href="#">رفع تظلم لدرجات الوزاري</a></li> -->
               <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/certificate"' ?>>طلب اصدار شهادة</a></li>
 
               <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/scholarship"' ?>>طلب بعثة دراسية</a></li>
-              <!-- <li><a class="dropdown-item text-light" href="#">تسجيل في خدمة النقل</a></li> -->
               <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/equation"' ?>>معادلة شهادة</a></li>
               <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/books"' ?>>تحميل المنهج</a></li>
             </ul>

@@ -1,4 +1,4 @@
-
+<?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 

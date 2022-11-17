@@ -38,42 +38,21 @@
     <div class="row">
       <div class="col-md-8">
         <article class="blog-post">
-          <a href="" style="text-decoration: none; color:black;">
-            <div class="p-4 mb-3 bg-light rounded">
-              <div class="row">
-                <div class="col-12 m-auto col-md-4">
-                  <img src="1.jpg" alt="school-image" class="w-100 thumbnail-img">
-                </div>
-                <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                  فوز اليمن بجائز دولية
-                </h4>
+
+          <div class="p-4 mb-3 bg-light rounded">
+            <div class="row">
+              <div class="col-12 m-auto col-md-4">
+                <img src="1.jpg" alt="school-image" class="w-100 thumbnail-img">
               </div>
+              <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
+                فوز اليمن بجائز دولية
+              </h4>
             </div>
-          </a>
-          <a href="" style="text-decoration: none; color:black;">
-            <div class="p-4 mb-3 bg-light rounded">
-              <div class="row">
-                <div class="col-12 m-auto col-md-4">
-                  <img src="1.jpg" alt="school-image" class="w-100 thumbnail-img">
-                </div>
-                <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                  فوز اليمن بجائز دولية
-                </h4>
-              </div>
-            </div>
-          </a>
-          <a href="" style="text-decoration: none; color:black;">
-            <div class="p-4 mb-3 bg-light rounded">
-              <div class="row">
-                <div class="col-12 m-auto col-md-4">
-                  <img src="1.jpg" alt="school-image" class="w-100 thumbnail-img">
-                </div>
-                <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                  فوز اليمن بجائز دولية
-                </h4>
-              </div>
-            </div>
-          </a>
+            <hr>
+            <a href="download.php?book=book" class="btn btn-primary mx-3">تحميل</a>
+            <a href="books/book.pdf" target="_blank" class="btn btn-primary mx-3">قراءة</a>
+          </div>
+
         </article>
       </div>
 

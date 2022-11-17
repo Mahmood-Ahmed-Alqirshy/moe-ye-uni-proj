@@ -43,15 +43,15 @@
           <form action="">
             <div class="form-group p-3">
               <label for="seat-number">رقم الجلوس</label>
-              <input type="text" class="form-control form-control-lg" id="seat-number" placeholder="رقم الجلوس">
+              <input type="file" class="form-control form-control-lg my-3" id="seat-number" name="seat-number">
             </div>
             <div class="form-group p-3">
               <label class="form-label" for="passport-image">جواز السفر</label>
-              <input type="file" class="form-control" id="passport-image" required>
+              <input type="file" class="form-control form-control-lg" id="passport-image" required>
             </div>
             <div class="form-group p-3">
               <label class="form-label" for="certificate-of-good-conduct">شعادة حسن سيرة وسلوك</label>
-              <input type="file" class="form-control" id="certificate-of-good-conduct" required>
+              <input type="file" class="form-control form-control-lg" id="certificate-of-good-conduct" required>
             </div>
             <br>
             <div class="form-group p-3">

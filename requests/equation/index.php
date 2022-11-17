@@ -43,7 +43,7 @@
           <form action="">
             <div class="form-group">
               <label for="seat-number">رقم الجلوس</label>
-              <input type="text" class="form-control form-control-lg" id="seat-number" placeholder="رقم الجلوس">
+              <input type="file" class="form-control form-control-lg my-3" id="seat-number" name="seat-number">
             </div>
             <br>
             <div class="form-group">

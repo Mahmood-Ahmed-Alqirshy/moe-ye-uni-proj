@@ -81,14 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form method="post" action="">
         <img class="mb-4" src=<?php echo '"http://' . $serverIP . '/moe-yemen/logo.png"' ?> alt="" width="128" height="128" />
         <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
-        <!-- <select style="height: 58px;" id="year" class="form-control" name="year" placeholder="السنة الدراسية">
-        <option value="" selected>السنة الدراسية</option>
-        <option value="2022-2023">2022-2023</option>
-        <option value="2021-2022">2021-2022</option>
-        <option value="2020-2021">2020-2021</option>
-        <option value="2019-2020">2019-2020</option>
-      </select>
-      <label for="year" hidden>year</label> -->
         <div class="form-floating has-validation">
           <?php
           if (isset($invalid))

@@ -1,1 +1,1 @@
-ErrorDocument 404 http://localhost/moe-yemen/notFound.php
+ErrorDocument 404 http://%{HTTP_HOST}/moe-yemen/notFound.php

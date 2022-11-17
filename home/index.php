@@ -52,6 +52,18 @@
 <body style="padding: 0;">
 
   <?php include("../header.php") ?>
+  <?php
+  if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+    echo <<< "Success"
+      <div class="alert alert-success alert-dismissible fade show">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      تم استلام طلبك يمكنك الاستفسار مع المدرسة عن حال قبول طلبك او ستتواصل معك الوزاره عن طريق المعلومات التي ارفقتها
+    </div>
+    Success;
+  }
+  ?>
+
   <main>
 
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -61,47 +73,30 @@
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <a href="#">
-            <img src="1.jpg" class="mycover" style="width: 100%;">
-
-            <div class="container">
-              <div class="carousel-caption text-start d-flex align-items-center justify-content-center mb-5">
-                <h1 class="mytext mb-5 p-3">اجتماع للوزير بشأن التعليم الالكتروني في اليمن</h1>
-
-
-              </div>
-            </div>
-          </a>
-        </div>
-        <!--  -->
-        <div class="carousel-item">
-          <a href="#">
-            <img src="3.jpg" class="mycover" style="width: 100%;">
-
-            <div class="container">
-              <div class="carousel-caption text-start d-flex align-items-center justify-content-center mb-5">
-                <h1 class="mytext mb-5 p-3">تعلن وزارة التربية والتعليم اليمنية عن موعد الامتحانات الوزارية</h1>
-
-
-              </div>
-            </div>
-          </a>
-        </div>
-        <!--  -->
-        <div class="carousel-item">
-          <a href="#">
-            <img src="4.jpg" class="mycover" style="width: 100%;">
-
-            <div class="container">
-              <div class="carousel-caption text-start d-flex align-items-center justify-content-center mb-5">
-                <h1 class="mytext mb-5 p-3">إدخال الروبوتات في المناهج اليمنية</h1>
-
-
-              </div>
-            </div>
-          </a>
-        </div>
+        <?php
+        $sql = "SELECT ID as id, title, post_date as postDate, cover FROM news ORDER BY post_date DESC LIMIT 3;";
+        $schools = $DB->prepare($sql);
+        $schools->execute();
+        $data = $schools->fetchAll();
+        for ($i = 0; $i < count($data); $i++) {
+          $title = $data[$i]->title;
+          $id = $data[$i]->id;
+          $cover = $data[$i]->cover;
+          $active = (($i <= 0) ? 'active'  : '');
+          echo <<< "slide"
+                <div class="carousel-item $active">
+                  <a href="http://$serverIP/moe-yemen/news/$id">
+                    <img src="http://$serverIP/moe-yemen/news/covers/$cover" class="mycover" style="width: 100%;">
+                    <div class="container">
+                      <div class="carousel-caption text-start d-flex align-items-center justify-content-center mb-5">
+                        <h1 class="mytext mb-5 p-3">$title</h1>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+          slide;
+        }
+        ?>
       </div>
       <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon bg-color-trans" aria-hidden="true"></span>
@@ -121,7 +116,7 @@
           <img src="2.jpg" class="minaster width-100per" alt="">
 
           <h2>وزير التربيةوالتعليم/طارق الكعبري</h2>
-          <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
+          <p><a class="btn btn-secondary" href=<?php echo '"http://' . $serverIP . '/moe-yemen/about/minister"' ?>>عرض التفاصيل</a></p>
         </div>
         <div class="col-lg-3"></div>
       </div>
@@ -134,7 +129,7 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">طلب الدرجات</h2>
           <p class="lead">يمكنك الان معرفة درجاتك من خلال الموقع الخاص بوزارة التربية والتعليم</p>
-          <a href="#" class="btn btn-dark text-light">قم بالطلب</a>
+          <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results"' ?> class="btn btn-dark text-light">قم بالطلب</a>
         </div>
         <div class="col-md-5">
           <img src="5.png" alt="" class="width-100per" style="border-radius: 15px;">
@@ -148,7 +143,7 @@
         <div class="col-md-7" dir="rtl">
           <h2 class="featurette-heading">طلب إصدار شهادة</h2>
           <p class="lead">يمكنك طلب اصدارة شهادة مختمة ومعتمدة من قبل موقع الوزارة واستلامها من مدرستك</p>
-          <a href="#" class="btn btn-dark text-light">قم بالطلب</a>
+          <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/certificate"' ?> class="btn btn-dark text-light">قم بالطلب</a>
         </div>
         <div class="col-md-5">
           <img src="6.png" alt="" class="width-100per" style="border-radius: 15px;">
