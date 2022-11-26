@@ -21,29 +21,37 @@ function saveFiles($name, $fileDist)
     return null;
   }
 }
+$valid = true;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $addData = $DB->prepare("insert into Students_request_to_register(student_name, nationality, sex, school, birth_certificate, grade, residence, date_of_birth, address, student_photo, e_mail, phone) value (?,?,?,?,?,?,?,?,?,?,?,?);");
+  $addData = $DB->prepare("insert into Students_request_to_register(student_name, nationality, sex, school, grade, residence, date_of_birth, birth_certificate, student_photo, address, e_mail, phone) value (?,?,?,?,?,?,?,?,?,?,?,?);");
   $dataToSend = [];
-  $dataToSend[] = $_POST['name'];
+  if ($_POST['name'] !== "")
+    $dataToSend[] = $_POST['name'];
   $dataToSend[] = $_POST['nationality'];
   $dataToSend[] = $_POST['sex'];
-  $dataToSend[] = $_GET['school'];
-  $birthCertificate = saveFiles('birth-certificate', "../../birth certificates/");
-  if (!$birthCertificate) {
-    header('location: http://' . $serverIP . '/moe-yemen/schools');
-    die();
-  }
-  $dataToSend[] = $birthCertificate;
+  $dataToSend[] = $_POST['school'];
   $dataToSend[] = $_POST['year'];
   $dataToSend[] = $_POST['directorate'];
-  $dataToSend[] = $_POST['date-of-birth'];
+  if ($_POST['date-of-birth'] != "")
+    $dataToSend[] = $_POST['date-of-birth'];
+  $birthCertificate = saveFiles('birth-certificate', "../../images/birth-certificates/");
+  $studentPhoto = saveFiles('photo', "../../images/students-photos/");
+  if ($birthCertificate)
+    $dataToSend[] = $birthCertificate;
+  if ($studentPhoto)
+    $dataToSend[] = $studentPhoto;
+  if (count($dataToSend) < 9)
+    $valid = false;
+  if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL, FILTER_NULL_ON_FAILURE) == null && (($_POST['phone']) ? $_POST['phone'] : null) == null)
+    $valid = false;
   $dataToSend[] = (($_POST['address']) ? $_POST['address'] : null);
-  $dataToSend[] = saveFiles('photo', "../../students photos/");
   $dataToSend[] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL, FILTER_NULL_ON_FAILURE);
   $dataToSend[] = (($_POST['phone']) ? $_POST['phone'] : null);
-  $addData->execute($dataToSend);
-  header('location: http://' . $serverIP . '/moe-yemen/home/?code=1');
-  die();
+  if ($valid) {
+    $addData->execute($dataToSend);
+    header('location: http://' . $serverIP . '/moe-yemen/home/?code=1');
+    die();
+  }
 }
 ?>
 
@@ -59,7 +67,7 @@ if (!isset($_GET['school'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>تسجيل طالب</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -93,21 +101,35 @@ if (!isset($_GET['school'])) {
       <div class="col-md-8">
         <article class="blog-post">
           <h1>تسجيل في <?php echo $_GET['name'] ?></h1>
+          <?php
+          if (!$valid) {
+            echo '<h2 class="text-danger">بعض البيانات قد تكون غير صحيحة او نسيت كتابة احد وسائل التواصل</h2>';
+          }
+          ?>
           <form action="" method="POST" enctype="multipart/form-data">
+            <?php
+            $school = $_GET['school'];
+            echo <<< "school"
+            <div class="form-group my-3">
+              <label for="school" hidden class="form-label">الاسم</label>
+              <input type="text" hidden class="form-control form-control-lg" id="school" name="school" value="$school">
+            </div>
+            school;
+            ?>
             <div class="form-group my-3">
               <label for="name" class="form-label">الاسم</label>
-              <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="الاسم">
+              <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="الاسم" required>
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="sex">الجنس</label>
-              <select class="form-control form-control-lg" id="sex" name="sex">
+              <select class="form-control form-control-lg" id="sex" name="sex" required>
                 <option value="1">ذكر</option>
                 <option value="2">انثى</option>
               </select>
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="nationality">الجنسية</label>
-              <select class="form-control form-control-lg" id="nationality" name="nationality">
+              <select class="form-control form-control-lg" id="nationality" name="nationality" required>
                 <option value="1">يمنية</option>
                 <option value="2">سعودية</option>
                 <option value="3">مصرية</option>
@@ -116,7 +138,7 @@ if (!isset($_GET['school'])) {
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="years">المرحلة الدراسية</label>
-              <select class="form-control form-control-lg" id="years" name="year">
+              <select class="form-control form-control-lg" id="years" name="year" required>
                 <option value="1">اول ابتدائي</option>
                 <option value="2">ثاني ابتدائي</option>
                 <option value="3">ثالث ابتدائي</option>
@@ -133,7 +155,7 @@ if (!isset($_GET['school'])) {
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="directorate">المديرية</label>
-              <select class="form-control form-control-lg" id="directorate" name="directorate">
+              <select class="form-control form-control-lg" id="directorate" name="directorate" required>
                 <option value="1">المنصورة</option>
                 <option value="2">الشيخ عثمان</option>
                 <option value="3">نهم</option>
@@ -142,7 +164,7 @@ if (!isset($_GET['school'])) {
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="date-of-birth">تاريخ الميلاد</label>
-              <input type="date" class="form-control form-control-lg" id="date-of-birth" name="date-of-birth">
+              <input type="date" class="form-control form-control-lg" id="date-of-birth" name="date-of-birth" required>
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="address">العنوان</label>
@@ -151,22 +173,28 @@ if (!isset($_GET['school'])) {
             <div class="form-group my-3">
               <label class="form-label" for="email">البريد الالكتروني</label>
               <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="البريد الالكتروني">
+              <div id="email" class="invalid-feedback">
+                يجب تحديد طريقة تواصل واحدة على الاقل
+              </div>
             </div>
-            <div class="form-group my-3">
+            <div class="form-group my-3 has-has-validation">
               <label class="form-label" for="phone">رقم الهاتف</label>
               <input type="text" class="form-control form-control-lg" id="phone" name="phone" placeholder="رقم الهاتف">
+              <div id="phone" class="invalid-feedback">
+                يجب تحديد طريقة تواصل واحدة على الاقل
+              </div>
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="photo">صورة شخصية</label>
-              <input type="file" class="form-control form-control-lg" id="photo" name="photo">
+              <input type="file" class="form-control form-control-lg" id="photo" name="photo" required>
             </div>
             <div class="form-group my-3">
               <label class="form-label" for="birth-certificate">شهادة الميلاد</label>
-              <input type="file" class="form-control form-control-lg my-3" id="birth-certificate" name="birth-certificate">
+              <input type="file" class="form-control form-control-lg my-3" id="birth-certificate" name="birth-certificate" required>
             </div>
             <br>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">ارسال</button>
+              <button type="submit" id="submit" class="btn btn-primary">ارسال</button>
             </div>
           </form>
         </article>
@@ -180,6 +208,7 @@ if (!isset($_GET['school'])) {
   </main>
 
   <!-- footer -->
+  <script src="main.js"></script>
   <?php include("../../footer.php") ?>
 </body>
 

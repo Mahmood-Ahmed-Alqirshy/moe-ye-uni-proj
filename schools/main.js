@@ -45,8 +45,9 @@ checkBoxEventListener(gendersCheckBoxes, selectedGenders);
 function checkBoxEventListener(checkBoxes, data) {
   checkBoxes.forEach(element => {
     element.addEventListener('change', (event) => {
+
       if (event.target.checked)
-        data.push(e.target.value);
+        data.push(event.target.value);
       else
         data.splice(data.indexOf(event.target), 1);
       renderData();

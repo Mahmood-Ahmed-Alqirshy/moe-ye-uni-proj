@@ -2,45 +2,18 @@
 session_start();
 
 $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+require '../UsefullClass.php';
+
 $DB = new PDO('mysql:host=localhost;dbname=moe', 'root', '1234');
 $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-function checkLogin()
-{
-  $nameQuery = $GLOBALS['DB']->prepare("select student_name as 'Name' from Student_auth join Students on Student_auth.ID = Students.ID where session_id = ?;");
-  $nameQuery->execute([$_SESSION['session_id']]);
-  if (count($nameQuery->fetchAll()) > 0) {
-    header("location: http://" . $GLOBALS['serverIP'] . "/moe-yemen/home/");
-    die();
-  }
-}
-if (isset($_SESSION['session_id'])) {
-  checkLogin();
-} else if (count($_COOKIE) > 0 && isset($_COOKIE['session_id'])) {
-  $_SESSION['session_id'] = $_COOKIE['session_id'];
-  checkLogin();
-}
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-  if ($_POST["username"] !== "" && $_POST["password"] !== "") {
-    $getSesstion = $DB->prepare('select session_id from Student_auth where username = ? and student_password = md5(?);');
-    $getSesstion->execute([$_POST["username"], $_POST["password"]]);
-    $returnedData = $getSesstion->fetch();
-    if ($returnedData) {
-      $_SESSION['session_id'] = $returnedData->session_id;
-      if (count($_COOKIE) > 0 && isset($_POST['remember-me']))
-        setcookie('session_id', $returnedData->session_id, time() + 3600 * 24 * 365, '/');
-      if (isset($_GET['location']))
-        header("location: http://" . $serverIP . $_GET['location']);
-      else
-        header("location: http://" . $serverIP . "/moe-yemen/home/");
-      die();
-    } else {
-      $invalid = true;
-    }
-  } else {
-    $invalid = true;
-  }
+UsefullClass\Done::checkLogin($DB, "Employee_auth", 'http://' . $serverIP . '/moe-yemen/home');
+$isvalid = true;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $sql = "select session_id from ((SELECT *, 0 as is_admin FROM student_auth) union (SELECT * FROM employee_auth)) as users where username = ? and user_password = md5(?);";
+  $toGoTo = 'http://' . $serverIP . ((isset($_GET['location'])) ? $_GET['location'] : '/moe-yemen/home');
+  $isvalid = UsefullClass\Done::signIn($DB, $sql, $_POST['username'], $_POST['password'], isset($_POST['remember-me']), $toGoTo);
 }
 
 ?>
@@ -83,12 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
         <div class="form-floating has-validation">
           <?php
-          if (isset($invalid))
-            echo '<input type="text" class="form-control is-invalid" id="username" name="username" placeholder="اسم المستخدم" />';
-          else
+          if ($isvalid)
             echo '<input type="text" class="form-control" id="username" name="username" placeholder="اسم المستخدم" />';
+          else
+            echo '<input type="text" class="form-control is-invalid" id="username" name="username" placeholder="اسم المستخدم" />';
           ?>
-          <!-- <input type="text" class="form-control" id="username" name="username" placeholder="رقم الجلوس" /> -->
           <label for="username">اسم المستخدم</label>
           <div id="username" class="invalid-feedback">
             اسم المستخدم قد يكون غير صحيح
@@ -97,13 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <br>
         <div class="form-floating has-validation">
           <?php
-          if (isset($invalid))
-            echo '<input type="password" class="form-control is-invalid" id="password" name="password" placeholder="كلمة المرور" />';
-          else
+          if ($isvalid)
             echo '<input type="password" class="form-control" id="password" name="password" placeholder="كلمة المرور" />';
+          else
+            echo '<input type="password" class="form-control is-invalid" id="password" name="password" placeholder="كلمة المرور" />';
           ?>
 
-          <!-- <input type="password" class="form-control is-invalid" id="password" name="password" placeholder="رقم الجلوس" /> -->
           <label for="password">كلمة المرور</label>
           <div id="password" class="invalid-feedback">
             كلمة المرور ربما تكون غير صحيحة

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>الدورات</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -39,27 +39,6 @@
       <div class="col-md-8">
         <article class="blog-post">
           <!--  -->
-          <div class="p-4 mb-3 bg-light rounded">
-            <div class="row">
-              <div class="col-12 m-auto col-md-2">
-                <p class="text-center">2022</p>
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">11</p>
-                <p class="text-center">February</p>
-              </div>
-              <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
-              </h4>
-              <div class="col-12 m-auto col-md-2">
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">15</p>
-                <p class="text-center">ساعة</p>
-              </div>
-            </div>
-            <hr>
-            <p>بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلا بلا</p>
-            <p>السعر : 2000ريال</p>
-            <p>المحافظة :</p>
-            <p style="font-size: 18px;"><a href="">المكان</a></p>
-          </div>
           <!--  -->
           <div class="p-4 mb-3 bg-light rounded">
             <div class="row">
@@ -69,7 +48,7 @@
                 <p class="text-center">February</p>
               </div>
               <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
+                دورة لغة انجليزية
               </h4>
               <div class="col-12 m-auto col-md-2">
                 <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">15</p>
@@ -77,33 +56,12 @@
               </div>
             </div>
             <hr>
-            <p>بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلا بلا</p>
+            <p>دورة لتعلم الانجليزي مقدمة من معهد جمبردج</p>
             <p>السعر : 2000ريال</p>
-            <p>المحافظة :</p>
-            <p style="font-size: 18px;"><a href="">المكان</a></p>
+            <p>المحافظة : عدن</p>
+            <p style="font-size: 18px;"><a href="#">المكان</a></p>
           </div>
-          <div class="p-4 mb-3 bg-light rounded">
-            <div class="row">
-              <div class="col-12 m-auto col-md-2">
-                <p class="text-center">2022</p>
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">11</p>
-                <p class="text-center">February</p>
-              </div>
-              <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
-              </h4>
-              <div class="col-12 m-auto col-md-2">
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">15</p>
-                <p class="text-center">ساعة</p>
-              </div>
-            </div>
-            <hr>
-            <p>بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلابلا بلا بلا</p>
-            <p>السعر : 2000ريال</p>
-            <p>المحافظة :</p>
-            <p>مقدم الدورة :</p>
-            <p style="font-size: 18px;"><a href="">المكان</a></p>
-          </div>
+
         </article>
       </div>
 

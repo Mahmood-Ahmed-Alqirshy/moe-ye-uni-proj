@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>حساب الطالب</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -39,36 +39,80 @@
     <div class="row">
       <div class="col-md-8">
         <article class="blog-post">
-          <table class="table">
+          <?php
+          if ($type === "S") {
+            $sql = "select student_name as 'name', Nationalities.nationality as nationality, Sex.sex as sex, Schools.school_name as school, Grades.grade as grade, Directorates.directorate as residence, Governorates.governorate as governorate, date_of_birth as 'dateOfBirth', student_photo as studentPhoto from Students left join Nationalities on Students.nationality = Nationalities.ID left join Sex on Students.sex = Sex.ID left join Schools on Students.school = Schools.ID left join Grades on Students.grade = Grades.ID left join Directorates on Students.residence = Directorates.ID left join Governorates on Directorates.governorate = Governorates.ID where Students.ID = (select ID from Student_auth where session_id = ?);";
+            $studentData = UsefullClass\Done::query($DB, $sql, UsefullClass\Done::getSession())[0];
+            $studentPhoto = "http://" . $serverIP . "/moe-yemen/images/students-photos/$studentData->studentPhoto";
+            echo <<< "student"
+            <table class="table">
             <tr>
-              <td colspan="">
+              <td colspan="2">
                 <div class="mx-auto w-50 w-lg-25 bg-dark rounded" style="aspect-ratio: 1/1;">
-                  <img src="2.jpg" alt="" class="w-100 h-100 rounded" style="object-fit: cover;">
+                  <img src="$studentPhoto" alt="" class="w-100 h-100 rounded" style="object-fit: cover;">
                 </div>
               </td>
-              <td></td>
             </tr>
             <tr>
               <td>الاسم</td>
-              <td></td>
+              <td>$studentData->name</td>
             </tr>
             <tr>
               <td>الجنسية</td>
-              <td></td>
+              <td>$studentData->nationality</td>
             </tr>
             <tr>
               <td>الجنس</td>
-              <td></td>
+              <td>$studentData->sex</td>
             </tr>
             <tr>
               <td>المدرسة</td>
-              <td></td>
+              <td>$studentData->school</td>
             </tr>
             <tr>
               <td>السنة الدراسية</td>
-              <td></td>
+              <td>$studentData->grade</td>
+            </tr>
+            <tr>
+              <td>الاقامة</td>
+              <td>$studentData->governorate, $studentData->residence</td>
+            </tr>
+            <tr>
+              <td>تاريخ الميلاد</td>
+              <td>$studentData->dateOfBirth</td>
             </tr>
           </table>
+          student;
+          } else {
+            $sql = "select employee_name as 'name', Job_types.job_type as 'job', Schools.school_name 'workplace', salary from Employees left join Job_types on Employees.job_type = Job_types.ID left join Schools on Employees.workplace = Schools.ID where Employees.ID = (select ID from Employee_auth where session_id = ?);";
+            $emloyeeData = UsefullClass\Done::query($DB, $sql, UsefullClass\Done::getSession())[0];
+            $employeeType = (($isAdmin) ? "مسؤول" : "موظف");
+            echo <<< "employee"
+            <table class="table">
+              <tr>
+                <td>الاسم</td>
+                <td>$emloyeeData->name</td>
+              </tr>
+              <tr>
+                <td>الوظيفة</td>
+                <td>$emloyeeData->job</td>
+              </tr>
+              <tr>
+                <td>المؤسسة</td>
+                <td>$emloyeeData->workplace</td>
+              </tr>
+              <tr>
+                <td>الراتب</td>
+                <td>$emloyeeData->salary</td>
+              </tr>
+              <tr>
+                <td>نوع الحساب</td>
+                <td>$employeeType</td>
+              </tr>
+            </table>
+            employee;
+          }
+          ?>
         </article>
       </div>
 

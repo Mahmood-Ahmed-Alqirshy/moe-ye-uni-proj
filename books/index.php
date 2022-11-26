@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>كتب المنهج</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -42,10 +42,10 @@
           <div class="p-4 mb-3 bg-light rounded">
             <div class="row">
               <div class="col-12 m-auto col-md-4">
-                <img src="1.jpg" alt="school-image" class="w-100 thumbnail-img">
+                <img src="math.jpg" alt="school-image" class="w-100 thumbnail-img-book">
               </div>
               <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
+                رياضيات للصف الثالث الابتدائي
               </h4>
             </div>
             <hr>

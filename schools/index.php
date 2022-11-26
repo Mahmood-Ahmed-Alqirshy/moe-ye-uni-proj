@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>المدارس</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->

@@ -162,6 +162,12 @@ h6 {
   object-fit: cover;
 }
 
+.thumbnail-img-book {
+
+  height: 150px;
+  object-fit: contain;
+}
+
 .ellipsis {
   text-overflow: ellipsis;
 

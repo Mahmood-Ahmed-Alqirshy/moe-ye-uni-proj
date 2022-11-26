@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>طلب الدرجات</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -32,7 +32,7 @@
 </head>
 
 <body>
-  <?php include("../../header.php"); ?>
+  <?php include("../../header.php") ?>
   <main class="container">
     <img src="1.png" class="mb-4 text-white rounded bg-dark cover-img">
 

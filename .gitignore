@@ -1,0 +1,5 @@
+images/birth-certificates/*
+!images/birth-certificates/index.php
+images/students-photos/*
+!images/students-photos/index.php
+api/registers/mail.txt

@@ -26,7 +26,8 @@
   }
 </style>
 <main style="margin-top: 30px;">
-  <footer class="bg-dark text-white p-md-3">
+  <img src=<?php echo '"http://' . $serverIP . '/moe-yemen/LH.svg"' ?> alt="" class="w-100" style="margin-bottom: -5px;">
+  <footer class=" text-white p-md-3" style="background-color: #2f2b38;">
     <div class="row mb-3 flex-column-reverse flex-md-row w-100 me-lg-auto">
       <div class="col-4 p-0 w-md-100 m-md-auto cen">
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15560.537137332829!2d44.9328395!3d12.834598!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc542ae687e34794a!2z2YjYstin2LHYqSDYp9mE2KrYsdio2YrYqSDZiNin2YTYqti52YTZitmFINin2YTZitmF2YbZitip!5e0!3m2!1sar!2s!4v1666620448241!5m2!1sar!2s" style="border: 5px white solid; border-radius: 5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>الجدول السنوي</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -47,7 +47,7 @@
                 <p class="text-center">February</p>
               </div>
               <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
+                الامتحانات الوزارية
               </h4>
               <div class="col-12 m-auto col-md-2">
                 <p class="text-center">2022</p>
@@ -63,38 +63,20 @@
               <div class="col-12 m-auto col-md-2">
                 <p class="text-center">2022</p>
                 <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">11</p>
-                <p class="text-center">February</p>
+                <p class="text-center">oct</p>
               </div>
               <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
+                بداية العام الدراسي
               </h4>
               <div class="col-12 m-auto col-md-2">
-                <p class="text-center">2022</p>
+                <p class="text-center">2023</p>
                 <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">15</p>
-                <p class="text-center">February</p>
+                <p class="text-center">may</p>
               </div>
             </div>
             <hr>
           </div>
-          <!--  -->
-          <div class="p-4 mb-3 bg-light rounded">
-            <div class="row">
-              <div class="col-12 m-auto col-md-2">
-                <p class="text-center">2022</p>
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">11</p>
-                <p class="text-center">February</p>
-              </div>
-              <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
-                فوز اليمن بجائز دولية
-              </h4>
-              <div class="col-12 m-auto col-md-2">
-                <p class="text-center">2022</p>
-                <p class="bg-dark p-3 text-light text-center rounded" style="font-size: 36px;">15</p>
-                <p class="text-center">February</p>
-              </div>
-            </div>
-            <hr>
-          </div>
+
         </article>
       </div>
 

@@ -1,5 +1,6 @@
 <?php
-include('../headers.php');
+// include('../headers.php');
+header("Content-Type: application/json; charset=UTF-8");
 
 $DB = new PDO('mysql:host=localhost;dbname=moe', 'root', '1234');
 $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);

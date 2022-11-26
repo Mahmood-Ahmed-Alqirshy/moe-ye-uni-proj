@@ -34,7 +34,7 @@ if (count($data) < 1) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>درجات الطالب</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -91,8 +91,20 @@ if (count($data) < 1) {
                   ?>
                 </td>
               </tr>
+              <tr>
+                <td>المحصلة</td>
+                <td>
+                  <?php
+                  $sum = 0;
+                  foreach ($data as $value) {
+                    $sum += $value->mark;
+                  }
+                  echo '<p class="mx-3">%' . round($sum / count($data), 2) . '</p>';
+                  ?>
+                </td>
+              </tr>
             </table>
-            <button type="button" class="btn btn-primary mx-3" data-bs-toggle="collapse" data-bs-target=".multi-collapse">تظلم</button>
+            <button type="button" hidden class="btn btn-primary mx-3" data-bs-toggle="collapse" data-bs-target=".multi-collapse">تظلم</button>
             <button type="submit" class="collapse multi-collapse btn btn-primary" id="www">ارسال</button>
           </form>
         </article>

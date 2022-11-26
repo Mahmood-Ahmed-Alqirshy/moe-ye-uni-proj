@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>page</title>
+  <title>الاحصائيات</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="../dist/css/bootstrap.rtl.min.css" rel="stylesheet" /> -->
@@ -41,28 +41,28 @@
           <div class="row p-4 mb-3 bg-light rounded">
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">عدد الطلاب</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">1759</p>
             </div>
             <!--  -->
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">عدد الذكور</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">809</p>
             </div>
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">عدد الاناث</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">950</p>
             </div>
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">عدد الناجحين</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">1607</p>
             </div>
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">عدد الراسبين</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">152</p>
             </div>
             <div class=" col-12 col-md-6 col-lg-4 " style="aspect-ratio: 2/1;">
               <h3 class="text-dark w-100 text-center">نسبة النجاح</h3>
-              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">200</p>
+              <p class="mx-auto rounded bg-dark text-light d-flex align-items-center justify-content-center py-5" style="font-size: 36px;">%89</p>
             </div>
           </div>
 

@@ -1,4 +1,5 @@
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+<?php
+$serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost"); ?>
 <link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="stylesheet" href=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/css/bootstrap.rtl.min.css"' ?>>
 <style>
@@ -18,7 +19,7 @@
     justify-content: space-between;
   }
 </style>
-<nav class="navbar navbar-expand-xl p-3 bg-dark navbar-light hdr" style="margin-bottom: 25px;">
+<nav class="navbar navbar-expand-xl p-3  navbar-light hdr" style="margin-bottom: 25px;background-color: #2f2b38;">
   <div class="container-fluid narflex">
     <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/home"' ?> class="d-flex align-items-center mx-lg-5 mb-2 mb-lg-0 text-white text-decoration-none">
       <img src=<?php echo '"http://' . $serverIP . '/moe-yemen/logo.png"' ?> alt="logo" style="height: 64px; width: 64px;">
@@ -28,18 +29,20 @@
       <?php
       if (!isset($name))
         echo '<a href=' . '"http://' . $serverIP . '/moe-yemen/sign-in"' . ' class="btn btn-outline-secondary me-2" style="text-decoration: none;">تسجيل الدخول</a>';
-      else
+      else {
+        $userType = (($type === 'S') ? "الطالب" : "الموظف");
         echo <<< "isIn"
         <div class="dropdown">
           <button type="button" class="dropdown-toggle text-light btn btn-outline-secondary" data-bs-toggle="dropdown">
             $name
           </button>
           <ul class="dropdown-menu bg-dark bg-dark">
-            <li><a class="dropdown-item  text-light" href="http://$serverIP/moe-yemen/profile">معلومات الطالب</a></li>
+            <li><a class="dropdown-item  text-light" href="http://$serverIP/moe-yemen/profile">معلومات $userType</a></li>
             <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/sign-out.php">تسجيل الخروج</a></li>
           </ul>
         </div>
         isIn;
+      }
       ?>
     </div>
     <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05">
@@ -62,21 +65,43 @@
           </div>
         </li>
         <li><a href=<?php echo '"http://' . $serverIP . '/moe-yemen/statistics"' ?> class="nav-link px-2 text-light">الإحصائيات</a></li>
-        <li>
-          <div class="dropdown">
-            <button type="button" class="btn text-light dropdown-toggle" data-bs-toggle="dropdown">
+        <?php
+        if (!isset($type) || $type === "S") {
+          echo <<< "studentServices"
+          <li>
+            <div class="dropdown">
+              <button type="button" class="btn text-light dropdown-toggle" data-bs-toggle="dropdown">
               خدمات الكترونية
-            </button>
-            <ul class="dropdown-menu bg-dark">
-              <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results"' ?>>عرض النتائج</a></li>
-              <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/certificate"' ?>>طلب اصدار شهادة</a></li>
+              </button>
+              <ul class="dropdown-menu bg-dark">
+                <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/requests/results">عرض النتائج</a></li>
+                <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/requests/certificate">طلب اصدار شهادة</a></li>
+                <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/requests/scholarship">طلب بعثة دراسية</a></li>
+                <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/requests/equation">معادلة شهادة</a></li>
+                <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/books">تحميل المنهج</a></li>
+              </ul>
+            </div>
+          </li>
+          studentServices;
+        } else if (isset($type) && @$type === "E" && @$isAdmin == true) {
+          echo <<< "studentServices"
+          <li>
+            <div class="dropdown">
+              <button type="button" class="btn text-light dropdown-toggle" data-bs-toggle="dropdown">
+              مراجعة الطلبات
+              </button>
+              <ul class="dropdown-menu bg-dark">
+              <li><a class="dropdown-item text-light" href="http://$serverIP/moe-yemen/review/registers">طلبات تسجيل الطلاب</a></li>
+                <li><a class="dropdown-item text-light" href="#">طلبات اصدار شهادة</a></li>
+                <li><a class="dropdown-item text-light" href="#">طلبات بعثة دراسية</a></li>
+                <li><a class="dropdown-item text-light" href="#">طلبات معادلة شهادة</a></li>
+              </ul>
+            </div>
+          </li>
+          studentServices;
+        }
+        ?>
 
-              <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/scholarship"' ?>>طلب بعثة دراسية</a></li>
-              <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/equation"' ?>>معادلة شهادة</a></li>
-              <li><a class="dropdown-item text-light" href=<?php echo '"http://' . $serverIP . '/moe-yemen/books"' ?>>تحميل المنهج</a></li>
-            </ul>
-          </div>
-        </li>
         <li><a href=<?php echo '"http://' . $serverIP . '/moe-yemen/news"' ?> class="nav-link px-2 text-light">الأخبار</a></li>
         <li>
           <div class="dropdown">
@@ -90,7 +115,8 @@
           </div>
         </li>
         <li><a href=<?php echo '"http://' . $serverIP . '/moe-yemen/schools"' ?> class="nav-link px-2 text-light">قائمة المدارس</a></li>
-        <li><a href=<?php echo '"http://' . $serverIP . '/moe-yemen/jobs"' ?> class="nav-link px-2 text-light">الوظائف</a></li>
+        <!-- <li><a href=<?php # echo '"http://' . $serverIP . '/moe-yemen/jobs"' 
+                          ?> class="nav-link px-2 text-light">الوظائف</a></li> -->
         <li>
           <div class="dropdown">
             <button type="button" class="btn text-light dropdown-toggle" data-bs-toggle="dropdown">
