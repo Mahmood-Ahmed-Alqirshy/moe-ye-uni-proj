@@ -51,7 +51,7 @@ if ($data) {
 <body>
   <?php include("../header.php") ?>
   <main class="container">
-    <img src="http://localhost/news/covers/' . $cover . '" class="mb-4 text-white rounded bg-dark cover-img">
+    <img src=<?php echo "\"http://localhost/news/covers/$cover\"" ?> class="mb-4 text-white rounded bg-dark cover-img">
 
     <div class="row">
       <div class="col-md-8">
