@@ -2,7 +2,7 @@
 <?php include("../../auth.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <head>
   <meta charset="utf-8" />
@@ -28,7 +28,7 @@
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -47,7 +47,7 @@
             echo '<h2 class="text-danger">بياناتك غير صحيحة</h2>';
           }
           ?>
-          <form action=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results/result.php"' ?> method="GET">
+          <form action="http://localhost/requests/results/result.php" method="GET">
             <div class="row">
               <div class="form-group col-12 col-md-8">
                 <label for="years">المرحلة الدراسية</label>

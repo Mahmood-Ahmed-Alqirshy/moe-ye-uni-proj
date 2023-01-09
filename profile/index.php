@@ -2,7 +2,7 @@
 <?php include("../auth.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <head>
   <meta charset="utf-8" />
@@ -28,7 +28,7 @@
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -43,7 +43,7 @@
           if ($type === "S") {
             $sql = "select student_name as 'name', Nationalities.nationality as nationality, Sex.sex as sex, Schools.school_name as school, Grades.grade as grade, Directorates.directorate as residence, Governorates.governorate as governorate, date_of_birth as 'dateOfBirth', student_photo as studentPhoto from Students left join Nationalities on Students.nationality = Nationalities.ID left join Sex on Students.sex = Sex.ID left join Schools on Students.school = Schools.ID left join Grades on Students.grade = Grades.ID left join Directorates on Students.residence = Directorates.ID left join Governorates on Directorates.governorate = Governorates.ID where Students.ID = (select ID from Student_auth where session_id = ?);";
             $studentData = UsefullClass\Done::query($DB, $sql, UsefullClass\Done::getSession())[0];
-            $studentPhoto = "http://" . $serverIP . "/moe-yemen/images/students-photos/$studentData->studentPhoto";
+            $studentPhoto = "http://localhost/images/students-photos/$studentData->studentPhoto";
             echo <<< "student"
             <table class="table">
             <tr>

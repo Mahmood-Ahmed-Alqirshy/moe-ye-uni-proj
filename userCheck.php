@@ -1,8 +1,7 @@
 <?php
 
 require 'UsefullClass.php';
-// to get the IP for device on local network
-$serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+
 session_start();
 $DB = new PDO('mysql:host=localhost;dbname=moe', 'root', '1234');
 $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);

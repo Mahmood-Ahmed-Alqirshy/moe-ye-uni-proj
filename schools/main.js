@@ -66,7 +66,7 @@ function checkPrice(data, input, stage) {
   return ((+input[stage] < 1000000) ? ((data[stage]) ? data[stage] : Number.MAX_SAFE_INTEGER) <= +input[stage] : true)
 }
 async function getData() {
-  fetchedData = await fetch(`http://${location.hostname}/moe-yemen/api/schools/`);
+  fetchedData = await fetch(`http://localhost/api/schools/`);
   fetchedData = await fetchedData.json();
 }
 async function renderData() {
@@ -154,7 +154,7 @@ async function renderData() {
   <hr>
   <hr>
 </div>
-<a href="http://${location.hostname}/moe-yemen/requests/register/?school=${data[i].ID}&name=${data[i].name}" class="btn mx-3 btn-dark text-light">تسجيل</a>
+<a href="http://localhost/requests/register/?school=${data[i].ID}&name=${data[i].name}" class="btn mx-3 btn-dark text-light">تسجيل</a>
 <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#school-${data[i].ID}">تفاصيل</button>
 </div>`
   }

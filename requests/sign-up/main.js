@@ -19,7 +19,7 @@ function checkPassword(str) {
 getUsernames()
 
 async function getUsernames() {
-  usernames = await fetch(`http://${location.hostname}/moe-yemen/api/usernames/`);
+  usernames = await fetch(`http://localhost/api/usernames/`);
   usernames = await usernames.json();
 }
 

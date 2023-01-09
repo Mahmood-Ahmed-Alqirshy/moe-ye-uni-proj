@@ -1,7 +1,7 @@
 <?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <head>
   <meta charset="utf-8" />
@@ -27,7 +27,7 @@
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -51,11 +51,11 @@
             $postDate = $data[$i]->postDate;
             $active = (($i <= 0) ? 'active'  : '');
             echo <<< "news"
-            <a href="http://$serverIP/moe-yemen/news/$id" style="text-decoration: none; color:black;">
+            <a href="http://localhost/news/$id" style="text-decoration: none; color:black;">
               <div class="p-4 mb-3 bg-light rounded">
                 <div class="row">
                   <div class="col-12 m-auto col-md-4">
-                    <img src="http://$serverIP/moe-yemen/news/covers/$cover" alt="school-image" class="w-100 thumbnail-img">
+                    <img src="http://localhost/news/covers/$cover" alt="school-image" class="w-100 thumbnail-img">
                   </div>
                   <h4 class="col-12 col-md-8 my-5 mx-auto" style="display:flex; align-items:center; justify-content:center;">
                     $title

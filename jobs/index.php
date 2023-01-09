@@ -1,7 +1,7 @@
 <?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <head>
   <meta charset="utf-8" />
@@ -53,7 +53,7 @@
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>

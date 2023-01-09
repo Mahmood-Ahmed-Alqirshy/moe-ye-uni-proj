@@ -1,7 +1,7 @@
 <?php
-$serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+
 if (!isset($_GET['key'])) {
-  header("location: http://" . $serverIP . "/moe-yemen/home/");
+  header("location: http://localhost/home/");
   die();
 }
 $DB = new PDO('mysql:host=localhost;dbname=moe', 'root', '1234');
@@ -9,7 +9,7 @@ $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $isInDB = $DB->prepare("select md5(ID) from Student_auth where md5(ID) = ?;");
 $isInDB->execute([$_GET['key']]);
 if ($isInDB->fetch()) {
-  header("location: http://" . $serverIP . "/moe-yemen/home/");
+  header("location: http://localhost/home/");
   die();
 }
 $validUser = true;
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "insert into Student_auth(ID,username,user_password,session_id) values((select ID from Students where md5(ID) = ?), ?, md5(?), uuid());";
     $statement = $DB->prepare($sql);
     $statement->execute([$_GET['key'], trim($_POST['username']), trim($_POST['password'])]);
-    header("location: http://" . $serverIP . "/moe-yemen/sign-in/");
+    header("location: http://localhost/sign-in/");
     die();
   }
 }
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>تسجيل حساب</title>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
 
   <style>
     .bd-placeholder-img {
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </style>
   <link href="signin.css" rel="stylesheet" />
 </head>
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <body class="text-center">
   <?php include("../../header.php"); ?>
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="body">
     <main class="form-signin">
       <form method="POST" action="">
-        <img class="mb-4" src=<?php echo '"http://' . $serverIP . '/moe-yemen/logo.png"' ?> alt="" width="128" height="128" />
+        <img class="mb-4" src="http://localhost/logo.png" alt="" width="128" height="128" />
         <h1 class="h3 mb-3 fw-normal">تسجيل حساب</h1>
         <?php
         if (!$validUser) {
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
     </main>
   </div>
-  <script src=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/js/bootstrap.bundle.min.js"' ?>></script>
+  <script src="http://localhost/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
 </body>
 

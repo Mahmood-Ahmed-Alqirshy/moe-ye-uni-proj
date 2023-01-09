@@ -1,9 +1,9 @@
 <?php include("../userCheck.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+<?php 
 if (!isset($_GET['id'])) {
-  header('location: http://' . $serverIP . '/moe-yemen/notFound.php');
+  header('location: http://localhost/notFound.php');
   die();
 }
 $sql = "SELECT ID as id, title, post_date as postDate, cover, content FROM news where id = ?;";
@@ -16,7 +16,7 @@ if ($data) {
   $postDate = $data->postDate;
   $content = $data->content;
 } else {
-  header('location: http://' . $serverIP . '/moe-yemen/notFound.php');
+  header('location: http://localhost/notFound.php');
   die();
 }
 ?>
@@ -45,13 +45,13 @@ if ($data) {
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>
   <?php include("../header.php") ?>
   <main class="container">
-    <img src=<?php echo '"http://' . $serverIP . '/moe-yemen/news/covers/' . $cover . '"' ?> class="mb-4 text-white rounded bg-dark cover-img">
+    <img src="http://localhost/news/covers/' . $cover . '" class="mb-4 text-white rounded bg-dark cover-img">
 
     <div class="row">
       <div class="col-md-8">

@@ -1,4 +1,4 @@
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 <style>
   .cen {
     margin: auto;
@@ -26,7 +26,7 @@
   }
 </style>
 <main style="margin-top: 30px;">
-  <img src=<?php echo '"http://' . $serverIP . '/moe-yemen/LH.svg"' ?> alt="" class="w-100" style="margin-bottom: -5px;">
+  <img src="http://localhost/LH.svg" alt="" class="w-100" style="margin-bottom: -5px;">
   <footer class=" text-white p-md-3" style="background-color: #2f2b38;">
     <div class="row mb-3 flex-column-reverse flex-md-row w-100 me-lg-auto">
       <div class="col-4 p-0 w-md-100 m-md-auto cen">
@@ -53,4 +53,4 @@
   </footer>
 </main>
 
-<script src=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/js/bootstrap.bundle.min.js"' ?>></script>
+<script src="http://localhost/dist/js/bootstrap.bundle.min.js"></script>

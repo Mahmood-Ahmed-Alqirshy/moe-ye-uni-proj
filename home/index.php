@@ -85,8 +85,8 @@
           $active = (($i <= 0) ? 'active'  : '');
           echo <<< "slide"
                 <div class="carousel-item $active">
-                  <a href="http://$serverIP/moe-yemen/news/$id">
-                    <img src="http://$serverIP/moe-yemen/news/covers/$cover" class="mycover" style="width: 100%;">
+                  <a href="http://localhost/news/$id">
+                    <img src="http://localhost/news/covers/$cover" class="mycover" style="width: 100%;">
                     <div class="container">
                       <div class="carousel-caption text-start d-flex align-items-center justify-content-center mb-5">
                         <h1 class="mytext mb-5 p-3">$title</h1>
@@ -116,7 +116,7 @@
           <img src="2.jpg" class="minaster width-100per" alt="">
 
           <h2>وزير التربيةوالتعليم/طارق الكعبري</h2>
-          <p><a class="btn btn-secondary" href=<?php echo '"http://' . $serverIP . '/moe-yemen/about/minister"' ?>>عرض التفاصيل</a></p>
+          <p><a class="btn btn-secondary" href="http://localhost/about/minister">عرض التفاصيل</a></p>
         </div>
         <div class="col-lg-3"></div>
       </div>
@@ -129,7 +129,7 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">طلب الدرجات</h2>
           <p class="lead">يمكنك الان معرفة درجاتك من خلال الموقع الخاص بوزارة التربية والتعليم</p>
-          <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/results"' ?> class="btn btn-dark text-light">قم بالطلب</a>
+          <a href="http://localhost/requests/results" class="btn btn-dark text-light">قم بالطلب</a>
         </div>
         <div class="col-md-5">
           <img src="5.png" alt="" class="width-100per" style="border-radius: 15px;">
@@ -143,7 +143,7 @@
         <div class="col-md-7" dir="rtl">
           <h2 class="featurette-heading">طلب إصدار شهادة</h2>
           <p class="lead">يمكنك طلب اصدارة شهادة مختمة ومعتمدة من قبل موقع الوزارة واستلامها من مدرستك</p>
-          <a href=<?php echo '"http://' . $serverIP . '/moe-yemen/requests/certificate"' ?> class="btn btn-dark text-light">قم بالطلب</a>
+          <a href="http://localhost/requests/certificate" class="btn btn-dark text-light">قم بالطلب</a>
         </div>
         <div class="col-md-5">
           <img src="6.png" alt="" class="width-100per" style="border-radius: 15px;">

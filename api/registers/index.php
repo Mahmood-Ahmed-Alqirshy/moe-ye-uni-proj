@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //e-mail
     $myfile = fopen("mail.txt", "w");
 
-    $link = "http://localhost/moe-yemen/requests/sign-up/?key=" . md5($DB->lastInsertId());
+    $link = "http://localhost/requests/sign-up/?key=" . md5($DB->lastInsertId());
     fwrite($myfile, $link);
     fclose($myfile);
   } else {

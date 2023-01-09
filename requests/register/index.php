@@ -1,5 +1,5 @@
 <?php include("../../userCheck.php") ?>
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 <?php
 function saveFiles($name, $fileDist)
 {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $dataToSend[] = (($_POST['phone']) ? $_POST['phone'] : null);
   if ($valid) {
     $addData->execute($dataToSend);
-    header('location: http://' . $serverIP . '/moe-yemen/home/?code=1');
+    header('location: http://localhost/home/?code=1');
     die();
   }
 }
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php
 if (!isset($_GET['school'])) {
-  header('location: http://' . $serverIP . '/moe-yemen/schools');
+  header('location: http://localhost/schools');
   die();
 }
 ?>
@@ -88,7 +88,7 @@ if (!isset($_GET['school'])) {
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>

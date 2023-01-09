@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-$serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost");
+
 require '../UsefullClass.php';
 
 $DB = new PDO('mysql:host=localhost;dbname=moe', 'root', '1234');
 $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
 
-UsefullClass\Done::checkLogin($DB, "Employee_auth", 'http://' . $serverIP . '/moe-yemen/home');
+UsefullClass\Done::checkLogin($DB, "Employee_auth", 'http://localhost/home');
 $isvalid = true;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $sql = "select session_id from ((SELECT *, 0 as is_admin FROM student_auth) union (SELECT * FROM employee_auth)) as users where username = ? and user_password = md5(?);";
-  $toGoTo = 'http://' . $serverIP . ((isset($_GET['location'])) ? $_GET['location'] : '/moe-yemen/home');
+  $toGoTo = 'http://localhost' . ((isset($_GET['location'])) ? $_GET['location'] : '/home');
   $isvalid = UsefullClass\Done::signIn($DB, $sql, $_POST['username'], $_POST['password'], isset($_POST['remember-me']), $toGoTo);
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>تسجيل الدخول</title>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
 
   <style>
     .bd-placeholder-img {
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
   <link href="signin.css" rel="stylesheet" />
 </head>
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 
 <body class="text-center">
   <?php include("../header.php"); ?>
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="body">
     <main class="form-signin">
       <form method="post" action="">
-        <img class="mb-4" src=<?php echo '"http://' . $serverIP . '/moe-yemen/logo.png"' ?> alt="" width="128" height="128" />
+        <img class="mb-4" src="http://localhost/logo.png" alt="" width="128" height="128" />
         <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
         <div class="form-floating has-validation">
           <?php
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </form>
     </main>
   </div>
-  <script src=<?php echo '"http://' . $serverIP . '/moe-yemen/dist/js/bootstrap.bundle.min.js"' ?>></script>
+  <script src="http://localhost/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

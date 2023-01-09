@@ -2,31 +2,31 @@
 <?php include("../../auth.php") ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<?php $serverIP = (strlen($_SERVER['SERVER_ADDR']) > 5 ? $_SERVER['SERVER_ADDR'] : "localhost") ?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
   if ($_GET['year'] == 12 && $_GET['term'] == 2) {
     if ($_GET['seat-number'] == "") {
-      header('location: http://' . $serverIP . '/moe-yemen/requests/results/index.php?error=yes');
+      header('location: http://localhost/requests/results/index.php?error=yes');
       die();
     }
     $isvalidSeatNumberQuery = $DB->prepare("select (select ID from Student_auth where session_id = ?)as 'userID', (select student_ID from Seat_numbers where seat_number = ?) as 'seatNumberID';");
     $isvalidSeatNumberQuery->execute([$_SESSION['session_id'], $_GET['seat-number']]);
     $result = $isvalidSeatNumberQuery->fetch();
     if ($result->userID !== $result->seatNumberID) {
-      header('location: http://' . $serverIP . '/moe-yemen/requests/results/index.php?error=yes');
+      header('location: http://localhost/requests/results/index.php?error=yes');
       die();
     }
   }
 } else {
-  header('location: http://' . $serverIP . '/moe-yemen/requests/results/index.php?error=yes');
+  header('location: http://localhost/requests/results/index.php?error=yes');
   die();
 }
 $marks = $DB->prepare("select students_results.ID as id, students_results.mark as mark, subjects.studying_subject as subject from students_results join subjects on students_results.result_subject = subjects.ID where grade = ? and term = ? and student_ID = (select ID from Student_auth where session_id = ?);");
 $marks->execute([$_GET['year'], $_GET['term'], $_SESSION['session_id']]);
 $data = $marks->fetchAll();
 if (count($data) < 1) {
-  header('location: http://' . $serverIP . '/moe-yemen/requests/results/index.php?error=yes');
+  header('location: http://localhost/requests/results/index.php?error=yes');
   die();
 }
 ?>
@@ -55,7 +55,7 @@ if (count($data) < 1) {
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>

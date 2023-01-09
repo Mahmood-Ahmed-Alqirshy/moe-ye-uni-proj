@@ -2,7 +2,7 @@
 <?php
 
 $isAdminEmp = (isset($type) && isset($isAdmin) && $isAdmin && $type === "E");
-UsefullClass\Done::auth($isAdminEmp, 'location: http://' . $serverIP . '/moe-yemen/sign-in/');
+UsefullClass\Done::auth($isAdminEmp, 'location: http://localhost/sign-in/');
 ?>
 
 
@@ -33,7 +33,7 @@ UsefullClass\Done::auth($isAdminEmp, 'location: http://' . $serverIP . '/moe-yem
     }
   </style>
 
-  <?php echo '<link href="http://' . $serverIP . '/moe-yemen/news/blog.rtl.css" rel="stylesheet" />' ?>
+  <link href="http://localhost/news/blog.rtl.css" rel="stylesheet" />
 </head>
 
 <body>

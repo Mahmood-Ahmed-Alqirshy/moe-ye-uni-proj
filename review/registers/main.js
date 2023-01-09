@@ -23,7 +23,7 @@ renderRequest();
 let requestIndex = -1;
 
 accept.addEventListener('click', async () => {
-  await fetch('http://localhost/moe-yemen/api/registers/', {
+  await fetch('http://localhost/api/registers/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -36,7 +36,7 @@ accept.addEventListener('click', async () => {
 });
 
 reject.addEventListener('click', async () => {
-  await fetch('http://localhost/moe-yemen/api/registers/', {
+  await fetch('http://localhost/api/registers/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -66,7 +66,7 @@ function clearScreen() {
 }
 
 async function getData() {
-  data = await fetch('http://localhost/moe-yemen/api/registers/');
+  data = await fetch('http://localhost/api/registers/');
   data = await data.json();
 }
 async function renderRequest() {
@@ -88,8 +88,8 @@ async function renderRequest() {
       grade.innerText = data[requestIndex].gradeName;
       school.innerText = data[requestIndex].schoolName;
       residence.innerText = data[requestIndex].residenceName;
-      studentPhoto.innerHTML = `<div class="mx-auto w-50 w-lg-25 bg-dark rounded" style="aspect-ratio: 1/1;"><img src="http://${location.hostname}/moe-yemen/images/students-photos/${data[requestIndex].studentPhoto}" alt="student" class="w-100 h-100 rounded" style="object-fit: cover;"></div>`;
-      birthCertificate.innerHTML = `<img src="http://${location.hostname}/moe-yemen/images/birth-certificates/${data[requestIndex].birthCertificate}" class="w-100" alt=""></img>`
+      studentPhoto.innerHTML = `<div class="mx-auto w-50 w-lg-25 bg-dark rounded" style="aspect-ratio: 1/1;"><img src="http://localhost/images/students-photos/${data[requestIndex].studentPhoto}" alt="student" class="w-100 h-100 rounded" style="object-fit: cover;"></div>`;
+      birthCertificate.innerHTML = `<img src="http://localhost/images/birth-certificates/${data[requestIndex].birthCertificate}" class="w-100" alt=""></img>`
       senders.forEach((e) => {
         e.removeAttribute('disabled');
       })
